@@ -1,0 +1,60 @@
+---
+title: "identicons"
+layout: layouts/home.njk
+---
+
+<script src="../assets/identicon.js"></script>
+  <script type="text/javascript">
+    const genRanHex = size => [...Array(size)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+    //let hashes = new Array(20); for (let i=0; i<20; ++i) hashes[i] = genRanHex(32);
+    let hashes = [
+"65a1cc682d51a9542f3a20663254394f",
+"b0ae16f6e3279087bd79e54c522a41be",
+"b46daf5e7d6d4c337d3b194e321d0715",
+"8b6f6d660241d2761735f78d21fc381b",
+"e1a0fe694811637f7e7dd586225163b6",
+"084e0257269adaf10e69f9c9f26af3d4",
+"f8a6d2ce4225097df337829b62514b19",
+"be3d780f4bb10d71916dac1691ff1f65",
+"dd5e3c4546b6d084ac82fb61b234bc62",
+"be8c98a7e2abb13752afcf3782452009",
+"5c00c26723588716aceace8c525ef63f",
+"9ab5a4c8703c1ff0e615d6bd121670a5",
+"3e69a516e22d529cebb61562022775a9",
+"3488b8eafafb6f5f4fdcb51b2232555b",
+"7e4fd28556330f159729c6b7b27bcb84",
+"6d531f6f8c9f42bfd73a1906e2285181",
+"57f8748502097d2910b44e0922233583",
+"b16443e64ea5ae7c640899da326962e8",
+"d3b65d06aec6755ab30dea28e222aae9",
+"70e034b12481c890772fcb187223e5e4",
+    ];
+
+    var i,
+    data;
+    options = {
+      size: 128,
+      format: 'svg'
+    };
+    for (i = 0; i < hashes.length; i++) {
+      data = new Identicon(hashes[i], options).toString();
+      if ((i + 1) % 5 === 0) {
+        linebreak = '<br><br>';
+      } else{
+        linebreak = '&nbsp;';
+      }
+      document.write(
+        '<img src="data:image/svg+xml;base64,' + data + '" style="display: inline">' + linebreak
+      );
+    }
+    for (i = 0; i < hashes.length; i++) {
+      if ((i + 1) % 5 === 0) {
+        linebreak = '<br><br>';
+      } else{
+        linebreak = '&nbsp;';
+      }
+      document.write(
+            '<code style="font-size: 40%;">' + hashes[i] + '</code>' + linebreak
+      );
+    }
+  </script>
